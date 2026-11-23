@@ -1,0 +1,29 @@
+# Dépendances
+node_modules/
+
+# Données locales de l'utilisateur (le carnet et la boîte réels vivent dans le dossier de données d'Electron,
+# mais on les exclut aussi s'ils sont copiés ici). Le carnet de démonstration (carnet-demo.json) EST versionné.
+boite.json
+carnet.json
+Envoyes/
+*.corrompu
+
+# Secrets éventuels
+.env
+.env.*
+*.pem
+*.key
+
+# Fichiers temporaires et système
+*.log
+npm-debug.log*
+tmp/
+.tmp/
+Thumbs.db
+desktop.ini
+.DS_Store
+*.lnk
+
+# Builds
+dist/
+out/

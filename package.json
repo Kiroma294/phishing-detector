@@ -1,0 +1,14 @@
+{
+  "name": "detecteur-phishing",
+  "version": "0.1.0",
+  "description": "Détecteur de phishing local (Ollama) pour TPE",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test-mails.js --detail"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^45.4.1"
+  }
+}

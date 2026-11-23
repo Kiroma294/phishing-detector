@@ -1,0 +1,52 @@
+{
+  "fournisseurs": [
+    {
+      "nom": "Papeterie Durand",
+      "domaines": [
+        "papeterie-durand.fr"
+      ],
+      "ribs": [
+        "FR7630004008280001234567841"
+      ]
+    },
+    {
+      "nom": "ElecPro Var",
+      "domaines": [
+        "elecpro-var.fr"
+      ],
+      "ribs": [
+        "FR7613906000123456789012322"
+      ]
+    },
+    {
+      "nom": "Imprimerie Provence",
+      "domaines": [
+        "imprimerie-provence.fr"
+      ],
+      "ribs": [
+        "FR7620041010050987654321017"
+      ]
+    },
+    {
+      "nom": "Boulangerie Bonnet (client)",
+      "domaines": [
+        "boulangerie-bonnet.fr"
+      ],
+      "ribs": []
+    },
+    {
+      "nom": "Garage Martin (client)",
+      "domaines": [
+        "garage-martin-toulon.fr"
+      ],
+      "ribs": []
+    },
+    {
+      "nom": "Cabinet Roux (collègues)",
+      "domaines": [
+        "cabinet-roux.fr"
+      ],
+      "ribs": []
+    }
+  ]
+}

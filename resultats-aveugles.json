@@ -1,0 +1,414 @@
+{
+  "date": "2026-11-23T08:39:09.979Z",
+  "hashes": {
+    "analyse.js": "1585130dcf89",
+    "regles.js": "b548320735d8"
+  },
+  "lignes": [
+    {
+      "nom": "legitime__09-durand-facture-rib-identique",
+      "attendu": "légitime",
+      "expediteur": "Papeterie Durand - Comptabilité <compta@papeterie-durand.fr>",
+      "objet": "Facture FA-2026-1203 - ramettes et classeurs",
+      "corps": "Bonjour Madame Roux,\n\nCi-joint la facture FA-2026-1203 de 436,80 € TTC pour la livraison du 18 novembre (20 ramettes A4, 30 classeurs), échéance au 18 décembre 2026.\n\nRèglement par virement, comme d'habitude :\nIBAN : FR76 3000 4008 2800 0123 4567 841\n\nBonne journée,\nNathalie Durand\nPapeterie Durand - 04 94 12 34 56",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 50,
+      "L": 15,
+      "final": 8,
+      "regles": [
+        "confiance_domaine_rib"
+      ],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail provient d'un fournisseur connu, le RIB correspond à celui du carnet de confiance et le contenu est cohérent avec une facture habituelle.",
+        "action": "Vérifiez la pièce jointe et conservez le mail. Si tout est correct, classez-le comme facture traitée.",
+        "scoreBrut": 15
+      },
+      "action": "Vérifiez la pièce jointe et conservez le mail. Si tout est correct, classez-le comme facture traitée."
+    },
+    {
+      "nom": "legitime__10-garage-martin-echeance-urgent",
+      "attendu": "légitime",
+      "expediteur": "Paul Martin <paul@garage-martin-toulon.fr>",
+      "objet": "Urgent : acompte d'impôt à régler avant le 15 décembre",
+      "corps": "Bonjour Sophie,\n\nJe viens de recevoir l'avis d'acompte de solde d'IS, je l'ai scanné et mis en pièce jointe. Il faut le régler avant le 15 décembre, donc on doit s'en occuper cette semaine. Peux-tu me dire aujourd'hui si la trésorerie suffit ? Le dossier est un peu confidentiel car je négocie en parallèle le rachat du local avec mon banquier.\n\nJe suis au garage jusqu'à 18h, tu peux m'appeler au 04 94 55 12 30.\n\nMerci,\nPaul",
+      "obtenu": "phishing",
+      "R": 36,
+      "T": 0,
+      "L": 65,
+      "final": 78,
+      "regles": [
+        "urgence",
+        "confidentialite"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "mots d'urgence",
+          "demande de confidentialité"
+        ],
+        "explication": "Le mail utilise des mots comme 'urgent' et 'confidentiel' pour presser la réponse. Cela peut être un signe de phishing.",
+        "action": "Ne répondez pas, ne cliquez pas sur les pièces jointes et signalez ce mail au responsable du cabinet.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas, ne cliquez pas sur les pièces jointes et signalez ce mail au responsable du cabinet."
+    },
+    {
+      "nom": "legitime__11-banque-information-tarifs",
+      "attendu": "légitime",
+      "expediteur": "Crédit Agricole Provence Côte d'Azur <information@ca-pca.fr>",
+      "objet": "Information sur la tarification 2027 de vos comptes professionnels",
+      "corps": "Madame, Monsieur,\n\nConformément à la réglementation, nous vous informons que de nouvelles conditions tarifaires seront applicables à compter du 1er février 2027. Elles figurent dans la brochure disponible en agence et sur notre site, rubrique « Tarifs ».\n\nAucune démarche n'est nécessaire de votre part. Votre conseillère, Mme Lambert, reste à votre disposition en agence ou au 04 94 00 00 00 pour toute question.\n\nNous vous remercions de votre confiance.\nCrédit Agricole Provence Côte d'Azur",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail est envoyé par une banque connue, avec un sujet et un contenu standard. Aucune demande d'argent ou de données sensibles n'est faite.",
+        "action": "Classer le mail dans la corbeille ou le dossier « informatif » sans réponse.",
+        "scoreBrut": 15
+      },
+      "action": "Classer le mail dans la corbeille ou le dossier « informatif » sans réponse."
+    },
+    {
+      "nom": "legitime__12-artisan-gmail-attestation",
+      "attendu": "légitime",
+      "expediteur": "Karim Benali <karim.benali.plomberie@gmail.com>",
+      "objet": "Attestation de revenus",
+      "corps": "Bonjour Madame Roux,\n\nC'est Karim Benali, le plombier de La Garde. Ma banque me demande une attestation de mes revenus 2025 pour un dossier de prêt. Est-ce que vous pourriez me la préparer ? Pas pressé, d'ici fin décembre ça ira.\n\nJe peux passer au cabinet chercher le papier si vous préférez.\n\nMerci beaucoup,\nKarim Benali\n06 12 34 56 78",
+      "obtenu": "suspect",
+      "R": 0,
+      "T": 0,
+      "L": 55,
+      "final": 55,
+      "regles": [],
+      "llm": {
+        "verdict": "suspect",
+        "score": 55,
+        "indices": [
+          "adresse de messagerie gratuite utilisée par un dirigeant ou entreprise"
+        ],
+        "explication": "L'expéditeur utilise une adresse Gmail, ce qui est peu courant pour un professionnel. Il demande une attestation de revenus, ce qui peut être un prétexte pour voler des données.",
+        "action": "Ne répondez pas, ne cliquez pas sur les liens et signalez ce mail au responsable du cabinet.",
+        "scoreBrut": 55
+      },
+      "action": "Ne répondez pas, ne cliquez pas sur les liens et signalez ce mail au responsable du cabinet."
+    },
+    {
+      "nom": "legitime__13-bonnet-previsionnel-detaille",
+      "attendu": "légitime",
+      "expediteur": "Claire Bonnet <claire.bonnet@boulangerie-bonnet.fr>",
+      "objet": "Prévisionnel 2027 et investissements",
+      "corps": "Bonjour Sophie,\n\nPour préparer le prévisionnel 2027, voici les chiffres dont je dispose :\n- Chiffre d'affaires 2026 estimé : 412 500 € (contre 385 200 € en 2025)\n- Achat du nouveau four : 18 750 € HT, livraison prévue le 12 janvier 2027\n- Emprunt de 25 000 € sur 5 ans à 4,1 %, soit environ 462 € de mensualité\n- Loyer du fournil : 1 850 € par mois, bail renouvelé au 1er mars 2027\n- Embauche d'un apprenti à partir de septembre 2027 (coût estimé 9 600 €/an)\n\nPourrait-on se voir la semaine du 7 décembre pour en discuter ? Je suis libre mardi après 14h ou jeudi matin.\n\nBien cordialement,\nClaire Bonnet\nBoulangerie Bonnet - 04 94 22 33 44",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail est cohérent, contient des informations financières et commerciales précises, et correspond à un interlocuteur habituel du cabinet. Aucun signal de phishing n'a été détecté.",
+        "action": "Répondez si nécessaire, classez le mail dans votre dossier correspondant.",
+        "scoreBrut": 15
+      },
+      "action": "Répondez si nécessaire, classez le mail dans votre dossier correspondant."
+    },
+    {
+      "nom": "legitime__14-julien-confidentiel",
+      "attendu": "légitime",
+      "expediteur": "Julien Faure <julien.faure@cabinet-roux.fr>",
+      "objet": "Confidentiel - entretiens annuels",
+      "corps": "Salut Sophie,\n\nJe te transmets pour aujourd'hui ma grille pour les entretiens annuels, c'est confidentiel donc ne la mets pas sur le serveur partagé. Je voudrais qu'on en parle avant la fin de la semaine, en particulier pour la prime de fin d'année. Je suis dispo demain à 11h en salle de réunion, ça te va ?\n\nMerci,\nJulien",
+      "obtenu": "suspect",
+      "R": 36,
+      "T": 0,
+      "L": 15,
+      "final": 46,
+      "regles": [
+        "urgence",
+        "confidentialite"
+      ],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [
+          "demande de confidentialité / discrétion"
+        ],
+        "explication": "Le mail est cohérent, il parle d'une grille d'entretiens et d'une réunion, et mentionne la confidentialité. Aucune demande d'argent ou de données sensibles n'est faite.",
+        "action": "Répondre si nécessaire, classer le mail dans le dossier correspondant.",
+        "scoreBrut": 15
+      },
+      "action": "Répondre si nécessaire, classer le mail dans le dossier correspondant."
+    },
+    {
+      "nom": "phishing__01-rib-durand-modifie",
+      "attendu": "phishing",
+      "expediteur": "Papeterie Durand - Comptabilité <compta@papeterie-durand.fr>",
+      "objet": "Facture FA-2026-1187 - échéance 15/12/2026",
+      "corps": "Bonjour Madame Roux,\n\nVeuillez trouver ci-joint la facture FA-2026-1187 d'un montant de 1 284,60 € TTC (fournitures de bureau, commande d'octobre), à régler au 15 décembre 2026.\n\nMerci de noter que nous avons mis à jour nos coordonnées bancaires suite à une réorganisation interne. Le règlement est à effectuer sur le compte suivant :\nIBAN : FR76 3000 4008 2800 0987 6543 210\nBIC : BNPAFRPPXXX\n\nNous vous remercions de bien vouloir mettre à jour votre fiche fournisseur.\n\nCordialement,\nNathalie Durand\nService comptabilité - Papeterie Durand\n04 94 12 34 56",
+      "obtenu": "phishing",
+      "R": 70,
+      "T": 0,
+      "L": 65,
+      "final": 90,
+      "regles": [
+        "rib_modifie"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "demande de changement de coordonnées bancaires",
+          "RIB différent du RIB connu"
+        ],
+        "explication": "Le fournisseur a changé ses coordonnées bancaires sans préavis et le RIB indiqué ne correspond pas à celui que vous connaissez. Cela peut être un phishing.",
+        "action": "Ne pas payer ni modifier le RIB. Rappeler Papeterie Durand au numéro de téléphone connu pour vérifier la validité de ce message.",
+        "scoreBrut": 65
+      },
+      "action": "Ne pas payer ni modifier le RIB. Rappeler Papeterie Durand au numéro de téléphone connu pour vérifier la validité de ce message."
+    },
+    {
+      "nom": "phishing__02-domaine-imite-elecpro",
+      "attendu": "phishing",
+      "expediteur": "ElecPro Var <facturation@elecpro-vaar.fr>",
+      "objet": "Facture 2026-0412 - intervention climatisation",
+      "corps": "Bonjour,\n\nVoici la facture 2026-0412 relative à l'intervention du 6 novembre dans vos locaux : 642,00 € TTC, payable sous 15 jours.\n\nPour le règlement par virement, nos coordonnées :\nIBAN : FR76 1390 6000 1234 5678 9012 355\nTitulaire : ElecPro Var SARL\n\nN'hésitez pas à me joindre en cas de question.\n\nBien cordialement,\nMarc Lopez\nElecPro Var - 04 94 67 21 08",
+      "obtenu": "phishing",
+      "R": 82,
+      "T": 0,
+      "L": 85,
+      "final": 97,
+      "regles": [
+        "typosquatting",
+        "rib_modifie"
+      ],
+      "llm": {
+        "verdict": "phishing",
+        "score": 85,
+        "indices": [
+          "domaine de l'expéditeur imite un domaine connu",
+          "RIB différent du RIB connu dans le carnet de confiance"
+        ],
+        "explication": "L'expéditeur imite un fournisseur connu et utilise un RIB différent de celui que vous connaissez. Cela peut être un phishing pour voler vos données bancaires.",
+        "action": "Ne répondez pas et ne faites pas de virement. Rappelez le fournisseur au numéro de téléphone connu du cabinet pour vérifier la véracité de ce message.",
+        "scoreBrut": 85
+      },
+      "action": "Ne répondez pas et ne faites pas de virement. Rappelez le fournisseur au numéro de téléphone connu du cabinet pour vérifier la véracité de ce message."
+    },
+    {
+      "nom": "phishing__03-faux-sharepoint",
+      "attendu": "phishing",
+      "expediteur": "Julien Faure <julien.faure@cabinet-roux.fr.partage-docs.net>",
+      "objet": "Dossier bilan Garage Martin - accès partagé",
+      "corps": "Salut Sophie,\n\nJ'ai déposé le dossier de bilan 2026 du Garage Martin sur le SharePoint pour que tu puisses relire les annexes avant jeudi.\nLien : https://cabinetroux-sharepoint.partage-docs.net/s/bilan-garage-martin\nIl te faudra te reconnecter avec ton compte Microsoft 365 du cabinet pour l'ouvrir.\n\nDis-moi si tu vois des écarts sur les amortissements.\n\nJulien",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail semble être une communication normale avec un lien vers un dossier partagé. Aucun élément suspect n’a été détecté.",
+        "action": "Ouvrez le lien si vous êtes sûr de sa provenance. Si vous avez des doutes, contactez Julien directement via le numéro de téléphone habituel.",
+        "scoreBrut": 15
+      },
+      "action": "Ouvrez le lien si vous êtes sûr de sa provenance. Si vous avez des doutes, contactez Julien directement via le numéro de téléphone habituel."
+    },
+    {
+      "nom": "phishing__04-demande-associe-virement",
+      "attendu": "phishing",
+      "expediteur": "Philippe Roux <philippe.roux@cabinet-roux.co>",
+      "objet": "Un service",
+      "corps": "Bonjour Sophie,\n\nJe suis en rendez-vous toute la journée avec un confrère à Marseille et je ne peux pas passer d'appel. Peux-tu préparer un virement de 8 450 € pour un acompte sur un dossier de reprise dont je t'ai parlé ? Il s'agit d'une opération confidentielle, merci de ne pas en parler pour l'instant à Julien.\n\nJe t'envoie les coordonnées du bénéficiaire dès que tu me confirmes par retour de mail. Je régulariserai l'écriture ce week-end.\n\nMerci d'avance,\nPhilippe",
+      "obtenu": "phishing",
+      "R": 69,
+      "T": 0,
+      "L": 65,
+      "final": 89,
+      "regles": [
+        "typosquatting",
+        "confidentialite",
+        "refus_telephone"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "demande de confidentialité / discrétion",
+          "refus ou impossibilité de confirmer par téléphone"
+        ],
+        "explication": "Le mail demande de ne pas parler à un collègue et refuse de confirmer par téléphone, ce qui est suspect. De plus, il parle d'une opération confidentielle et demande un virement sans vérification par téléphone.",
+        "action": "Ne répondez pas, ne cliquez pas sur les liens et signalez ce mail au responsable du cabinet.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas, ne cliquez pas sur les liens et signalez ce mail au responsable du cabinet."
+    },
+    {
+      "nom": "phishing__05-fausse-facture-pj",
+      "attendu": "phishing",
+      "expediteur": "Service Facturation <facture@gestion-factures-pro.com>",
+      "objet": "Rappel - facture n° 20261104 impayée",
+      "corps": "Bonjour,\n\nSauf erreur de notre part, la facture n° 20261104 du 4 novembre 2026 (1 920,00 € HT) reste impayée à ce jour. Vous la trouverez en pièce jointe : Facture_20261104.pdf.html\n\nMerci de procéder au règlement dans les meilleurs délais afin d'éviter des pénalités de retard.\n\nCordialement,\nService recouvrement",
+      "obtenu": "suspect",
+      "R": 0,
+      "T": 0,
+      "L": 65,
+      "final": 65,
+      "regles": [],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "domaine de l'expéditeur imite un fournisseur connu",
+          "pièce jointe suspecte (.html au lieu de .pdf)"
+        ],
+        "explication": "L'expéditeur imite un fournisseur habituel mais l'extension du fichier joint est anormale. Cela peut être un piège pour voler vos données.",
+        "action": "Ne répondez pas, ne cliquez pas sur la pièce jointe et signalez ce mail au responsable du cabinet.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas, ne cliquez pas sur la pièce jointe et signalez ce mail au responsable du cabinet."
+    },
+    {
+      "nom": "phishing__06-faux-urssaf",
+      "attendu": "phishing",
+      "expediteur": "URSSAF - Espace employeur <ne-pas-repondre@urssaf-espace-employeur.fr>",
+      "objet": "Mise à jour de votre compte employeur - déclaration du 4e trimestre",
+      "corps": "Madame, Monsieur,\n\nDans le cadre de la campagne de déclaration du quatrième trimestre 2026, nous vous invitons à vérifier les informations de votre compte employeur Cabinet Roux.\n\nConnectez-vous à votre espace pour confirmer vos informations avant le 15 décembre 2026 :\nhttps://www.urssaf-espace-employeur.fr/connexion\n\nVous aurez besoin de votre identifiant et de votre mot de passe habituels.\n\nCordialement,\nLe service Employeurs\nURSSAF Provence-Alpes-Côte d'Azur",
+      "obtenu": "phishing",
+      "R": 61,
+      "T": 0,
+      "L": 65,
+      "final": 86,
+      "regles": [
+        "domaine_nom_affiche",
+        "typosquatting"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "domaine de l'expéditeur imite un domaine connu",
+          "demande de connexion à un lien externe"
+        ],
+        "explication": "L'expéditeur imite le domaine officiel de l'URSSAF mais utilise un sous-domaine peu connu. Le lien vers la connexion est suspect et pourrait mener à un site frauduleux.",
+        "action": "Ne pas cliquer sur le lien. Ne pas répondre. Signaler au responsable du cabinet.",
+        "scoreBrut": 65
+      },
+      "action": "Ne pas cliquer sur le lien. Ne pas répondre. Signaler au responsable du cabinet."
+    },
+    {
+      "nom": "phishing__07-boulangerie-remboursement-iban",
+      "attendu": "phishing",
+      "expediteur": "Claire Bonnet <claire.bonnet@boulangerie-bonnet.com>",
+      "objet": "RE: Remboursement de TVA - nouveau compte",
+      "corps": "Bonjour Madame Roux,\n\nSuite à notre échange de la semaine dernière, je vous confirme que nous avons changé de banque pour la boulangerie. Pour le remboursement du crédit de TVA de 2 316 € que vous avez demandé aux impôts, pourriez-vous utiliser ce nouvel IBAN pour la déclaration :\nFR76 1695 8000 0112 3456 7890 143\n\nL'ancien compte va être clôturé à la fin du mois. Merci de me confirmer la prise en compte.\n\nBien à vous,\nClaire Bonnet\nBoulangerie Bonnet - Toulon",
+      "obtenu": "phishing",
+      "R": 58,
+      "T": 0,
+      "L": 85,
+      "final": 94,
+      "regles": [
+        "typosquatting",
+        "changement_rib"
+      ],
+      "llm": {
+        "verdict": "phishing",
+        "score": 85,
+        "indices": [
+          "domaine de l'expéditeur imite un domaine connu",
+          "demande de changement de coordonnées bancaires"
+        ],
+        "explication": "L'expéditeur imite un fournisseur connu en utilisant un domaine proche. Il demande de changer de coordonnées bancaires, ce qui est inhabituel et peut être un piège pour voler vos données.",
+        "action": "Ne répondez pas et ne cliquez pas sur aucun lien. Signalez ce mail au responsable du cabinet. Ne modifiez pas le RIB ni effectuez de virement avant de vérifier avec le fournisseur au numéro connu.",
+        "scoreBrut": 85
+      },
+      "action": "Ne répondez pas et ne cliquez pas sur aucun lien. Signalez ce mail au responsable du cabinet. Ne modifiez pas le RIB ni effectuez de virement avant de vérifier avec le fournisseur au numéro connu."
+    },
+    {
+      "nom": "phishing__08-docusign-contrat",
+      "attendu": "phishing",
+      "expediteur": "DocuSign via Cabinet Roux <dse@docusign-eu-sign.net>",
+      "objet": "Julien Faure vous a envoyé un document à signer : Avenant mission 2027",
+      "corps": "Bonjour Sophie Roux,\n\nJulien Faure vous a envoyé un document à relire et signer : « Avenant lettre de mission 2027 ».\n\nPour consulter et signer le document, cliquez ici :\nhttps://docusign-eu-sign.net/signing/7f3a91c2\n\nVous devrez vous identifier avec l'adresse e-mail et le mot de passe de votre messagerie pour accéder à l'enveloppe.\n\nNe transférez pas cet e-mail : le lien est personnel.\nDocuSign - Signature électronique",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail provient d'une adresse liée à DocuSign, service de signature électronique connu. L'objet et le contenu correspondent à un processus normal de signature d'un document.",
+        "action": "Répondez si nécessaire, classez le mail comme traité.",
+        "scoreBrut": 15
+      },
+      "action": "Répondez si nécessaire, classez le mail comme traité."
+    },
+    {
+      "nom": "suspect__15-imprimerie-changement-banque",
+      "attendu": "suspect",
+      "expediteur": "Imprimerie Provence <comptabilite@imprimerie-provence.fr>",
+      "objet": "Changement de domiciliation bancaire au 1er janvier 2027",
+      "corps": "Bonjour,\n\nNous vous informons qu'à compter du 1er janvier 2027, notre société change d'établissement bancaire. Tous les règlements devront désormais être effectués sur le compte suivant :\nIBAN : FR76 1027 8089 1000 0201 3450 187\nBIC : CMCIFR2A\n\nUn courrier officiel vous sera adressé prochainement. Cette modification concerne la facture 2026-889 du 20 novembre 2026 (2 740,00 € TTC), échéance au 31 décembre.\n\nBien cordialement,\nIsabelle Vidal\nComptabilité - Imprimerie Provence\n04 94 89 10 20",
+      "obtenu": "phishing",
+      "R": 70,
+      "T": 0,
+      "L": 65,
+      "final": 90,
+      "regles": [
+        "rib_modifie"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "RIB DIFFÉRENT du RIB connu dans le carnet",
+          "demande de changement de coordonnées bancaires"
+        ],
+        "explication": "Le RIB fourni est différent de celui que vous connaissez et la demande de changement de coordonnées bancaires est suspecte. Vérifiez toujours avant de modifier vos informations bancaires.",
+        "action": "Ne répondez pas et ne modifiez pas le RIB. Rappellez Imprimerie Provence au numéro de téléphone connu du cabinet pour confirmer la validité de ce message.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas et ne modifiez pas le RIB. Rappellez Imprimerie Provence au numéro de téléphone connu du cabinet pour confirmer la validité de ce message."
+    },
+    {
+      "nom": "suspect__16-inconnu-devis",
+      "attendu": "suspect",
+      "expediteur": "Thomas Girard <t.girard@groupe-girard-conseil.fr>",
+      "objet": "Demande de devis - mission d'accompagnement comptable",
+      "corps": "Bonjour,\n\nJe dirige une petite société de conseil qui s'installe à Toulon en janvier 2027. Votre cabinet m'a été recommandé et j'aimerais obtenir un devis pour la tenue comptable et les bulletins de paie (3 salariés prévus).\n\nPourriez-vous m'indiquer vos tarifs et me faire parvenir une lettre de mission type ? Je dispose déjà d'un Kbis en cours d'immatriculation que je pourrai vous transmettre.\n\nCordialement,\nThomas Girard\n06 45 78 12 90",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail est bien signé par un expéditeur dont le domaine n'est pas connu, mais il ne contient pas de demande d'argent, de RIB ou de données sensibles. Le contexte semble professionnel et correspond à une demande normale de devis.",
+        "action": "Répondez normalement au mail et conservez-le dans votre dossier de prospection.",
+        "scoreBrut": 15
+      },
+      "action": "Répondez normalement au mail et conservez-le dans votre dossier de prospection."
+    }
+  ]
+}

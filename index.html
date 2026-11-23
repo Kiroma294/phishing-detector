@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<!-- Politique de sécurité : aucun chargement externe, scripts de l'app uniquement -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'none'">
+<title>Détecteur de phishing</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: Segoe UI, sans-serif; margin: 0; background: #f3f4f6; color: #1f2937; }
+  header { background: #1e293b; color: #fff; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; }
+  header h1 { font-size: 18px; margin: 0; }
+  #statut { font-size: 13px; }
+  nav { background: #334155; padding: 0 24px; display: flex; gap: 4px; }
+  nav button { margin: 0; background: transparent; color: #cbd5e1; border-radius: 0; padding: 10px 18px; font-size: 14px; }
+  nav button.actif { background: #f3f4f6; color: #1e293b; }
+  main { max-width: 860px; margin: 20px auto; padding: 0 16px; }
+  label { display: block; font-weight: 600; margin: 12px 0 4px; font-size: 14px; }
+  input, textarea { width: 100%; padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; font: inherit; }
+  textarea { min-height: 200px; resize: vertical; }
+  button { margin-top: 14px; padding: 11px 28px; font-size: 15px; font-weight: 600; border: 0; border-radius: 6px; background: #2563eb; color: #fff; cursor: pointer; }
+  button:disabled { background: #94a3b8; cursor: wait; }
+  .cache { display: none; }
+
+  /* Boîte de réception : liste à gauche, mail ouvert à droite */
+  main.large { max-width: none; margin: 0; padding: 0; }
+  .boite { display: grid; grid-template-columns: 360px 1fr; height: calc(100vh - 92px); }
+  .liste { border-right: 1px solid #cbd5e1; background: #fff; overflow-y: auto; }
+  .liste-entete { display: flex; gap: 6px; padding: 8px; border-bottom: 1px solid #e2e8f0; background: #f8fafc; align-items: center; position: sticky; top: 0; z-index: 1; }
+  .liste-entete button { margin: 0; padding: 6px 10px; font-size: 12px; }
+  .liste-entete .onglet { background: #e2e8f0; color: #334155; }
+  .liste-entete .onglet.actif { background: #1e293b; color: #fff; }
+  .liste-entete .gris { background: #64748b; }
+  .item { display: grid; grid-template-columns: 18px 1fr; gap: 8px; padding: 10px 12px; border-bottom: 1px solid #e2e8f0; cursor: pointer; }
+  .item:hover { background: #f1f5f9; } .item.sel { background: #e0e7ff; }
+  .item .exp { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item.nonlu .exp, .item.nonlu .obj { font-weight: 700; }
+  .item .obj { font-size: 13px; color: #334155; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .item .court { font-size: 12px; font-weight: 700; margin-top: 2px; }
+  .pastille { width: 14px; height: 14px; border-radius: 50%; margin-top: 3px; background: #94a3b8; }
+  .p-phishing { background: #dc2626; } .p-suspect { background: #f59e0b; } .p-legitime { background: #16a34a; }
+  .p-attente { background: #94a3b8; animation: pulse 1.2s infinite; } .p-erreur { background: #475569; }
+  @keyframes pulse { 50% { opacity: .35; } }
+  .c-phishing { color: #b91c1c; } .c-suspect { color: #b45309; } .c-legitime { color: #15803d; } .c-attente, .c-erreur { color: #64748b; }
+  .lecture { overflow-y: auto; padding: 18px 24px; }
+  .lecture .vide { color: #64748b; margin-top: 40px; text-align: center; }
+  .mail-entete { font-size: 13px; color: #475569; margin-bottom: 10px; }
+  .mail-entete h2 { font-size: 18px; color: #1f2937; margin: 0 0 6px; }
+  .mail-corps { white-space: pre-wrap; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; font-size: 14px; margin-top: 14px; }
+  .barre { display: flex; gap: 8px; align-items: center; margin-top: 12px; }
+  .barre button { margin: 0; padding: 8px 16px; font-size: 14px; }
+  .avertissement { background: #fee2e2; border: 2px solid #dc2626; border-radius: 8px; padding: 12px 14px; margin-top: 12px; color: #7f1d1d; }
+  .avertissement button { margin: 8px 8px 0 0; }
+  .gris { background: #64748b; } .rouge { background: #dc2626; }
+  .reponse textarea { min-height: 120px; }
+
+  /* Résultat : alerte en français d'abord (grande), score ensuite (petit) */
+  .resultat { margin-top: 22px; border-radius: 10px; padding: 20px; border-left: 10px solid; background: #fff; display: none; }
+  .resultat.phishing { border-color: #dc2626; background: #fef2f2; }
+  .resultat.suspect  { border-color: #f59e0b; background: #fffbeb; }
+  .resultat.legitime { border-color: #16a34a; background: #f0fdf4; }
+  .resultat.erreur   { border-color: #6b7280; background: #f9fafb; }
+  .alerte { font-size: 28px; font-weight: 800; line-height: 1.2; margin: 0 0 8px; }
+  .phishing .alerte { color: #b91c1c; } .suspect .alerte { color: #b45309; } .legitime .alerte { color: #15803d; }
+  .alerte-rib { font-size: 22px; font-weight: 800; color: #b91c1c; background: #fee2e2; border-radius: 8px; padding: 10px 14px; margin: 10px 0; }
+  .alerte-rib small { display: block; font-size: 13px; font-weight: 400; color: #7f1d1d; margin-top: 4px; word-break: break-all; }
+  .action { font-size: 17px; margin: 10px 0; }
+  .score { font-size: 12px; color: #64748b; margin: 14px 0 0; }
+  h3 { margin: 16px 0 4px; font-size: 14px; text-transform: uppercase; color: #475569; }
+  ul { margin: 4px 0; padding-left: 20px; }
+  .cartes { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+  .carte { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px; }
+  .carte h3 { margin-top: 0; }
+  .poids { float: right; font-size: 12px; background: #e2e8f0; border-radius: 99px; padding: 1px 8px; }
+  .detail { display: block; font-size: 12px; color: #64748b; word-break: break-all; }
+  .petit { font-size: 13px; color: #475569; }
+  .mention { text-align: center; font-size: 11px; color: #94a3b8; margin: 28px 0 8px; }
+
+  /* Carnet de confiance */
+  table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 8px; overflow: hidden; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #e2e8f0; font-size: 13px; vertical-align: top; }
+  th { background: #e2e8f0; }
+  .puce { display: inline-block; background: #e0f2fe; border-radius: 99px; padding: 2px 4px 2px 10px; margin: 2px 4px 2px 0; font-size: 12px; }
+  .puce button, .supprimer { margin: 0; padding: 0 7px; background: transparent; color: #b91c1c; font-size: 14px; }
+  .ligne-form { display: grid; grid-template-columns: 1fr 1fr 1.4fr auto; gap: 10px; align-items: end; }
+  #msg-carnet { color: #b91c1c; font-size: 13px; margin-top: 8px; min-height: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🛡️ Détecteur de phishing — analyse 100 % locale</h1>
+  <span id="statut">Vérification d'Ollama…</span>
+</header>
+<nav>
+  <button id="onglet-boite" class="actif">Boîte de réception</button>
+  <button id="onglet-analyse">Analyser un mail</button>
+  <button id="onglet-carnet">Carnet de confiance</button>
+</nav>
+
+<main id="page-boite" class="large">
+  <div class="boite">
+    <div class="liste">
+      <div class="liste-entete">
+        <button id="b-recus" class="onglet actif">Reçus</button>
+        <button id="b-envoyes" class="onglet">Envoyés</button>
+        <span style="flex:1"></span>
+        <button id="b-demo">Démo : recevoir 10 mails</button>
+        <button id="b-vider" class="gris" title="Vider la boîte de réception">🗑</button>
+      </div>
+      <div id="liste-mails"></div>
+    </div>
+    <div class="lecture" id="lecture"><p class="vide">Sélectionnez un mail.</p></div>
+  </div>
+</main>
+
+<main id="page-analyse" class="cache">
+  <label for="expediteur">Expéditeur</label>
+  <input id="expediteur" placeholder="ex : Jean Dupont &lt;jean@exemple.fr&gt;">
+  <label for="objet">Objet</label>
+  <input id="objet">
+  <label for="corps">Corps du mail</label>
+  <textarea id="corps" placeholder="Collez ici le contenu du mail…"></textarea>
+  <button id="analyser">Analyser</button>
+  <div id="resultat" class="resultat"></div>
+  <p class="mention">Analyse spécialisée fraude au virement</p>
+</main>
+
+<main id="page-carnet" class="cache">
+  <p class="petit">Fournisseurs et clients que le cabinet connaît. Un mail venant d'un domaine du carnet avec un RIB différent du RIB enregistré déclenche une alerte forte. Données stockées sur ce PC uniquement.</p>
+  <table>
+    <thead><tr><th>Nom</th><th>Domaines</th><th>RIB connus</th><th></th></tr></thead>
+    <tbody id="carnet-lignes"></tbody>
+  </table>
+  <h3>Ajouter</h3>
+  <div class="ligne-form">
+    <div><label for="c-nom">Nom</label><input id="c-nom" placeholder="Papeterie Durand"></div>
+    <div><label for="c-domaine">Domaine</label><input id="c-domaine" placeholder="papeterie-durand.fr"></div>
+    <div><label for="c-iban">RIB / IBAN (facultatif)</label><input id="c-iban" placeholder="FR76 3000 4008 …"></div>
+    <button id="c-ajouter" style="margin:0">Ajouter</button>
+  </div>
+  <div id="msg-carnet"></div>
+</main>
+<script src="renderer.js"></script>
+</body>
+</html>

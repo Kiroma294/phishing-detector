@@ -1,0 +1,422 @@
+{
+  "date": "2026-11-23T09:18:41.769Z",
+  "hashes": {
+    "analyse.js": "7079785c4564",
+    "regles.js": "d1407de1b06e"
+  },
+  "lignes": [
+    {
+      "nom": "legitime__09-facture-durand-rib-identique",
+      "attendu": "légitime",
+      "expediteur": "Marc Durand <compta@papeterie-durand.fr>",
+      "objet": "Facture FA-2026-1203 - fournitures de novembre",
+      "corps": "Bonjour Madame Roux,\n\nVeuillez trouver ci-joint la facture FA-2026-1203 du 20 novembre 2026 (318,45 € TTC) pour la livraison de ramettes et de classeurs.\n\nRèglement par virement à 30 jours sur notre compte habituel :\nIBAN : FR76 3000 4008 2800 0123 4567 841\n\nBien cordialement,\nMarc Durand\nPapeterie Durand – 04 94 22 18 40",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 50,
+      "L": 15,
+      "final": 8,
+      "regles": [
+        "confiance_domaine_rib"
+      ],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail provient d'un fournisseur connu, le RIB correspond à celui du carnet de confiance et le contenu est cohérent avec une facture.",
+        "action": "Classer le mail comme reçu et vérifier la pièce jointe si nécessaire.",
+        "scoreBrut": 15
+      },
+      "action": "Classer le mail comme reçu et vérifier la pièce jointe si nécessaire."
+    },
+    {
+      "nom": "legitime__10-garage-martin-urgent-confidentiel",
+      "attendu": "légitime",
+      "expediteur": "Pierre Martin <pierre.martin@garage-martin-toulon.fr>",
+      "objet": "URGENT - bilan confidentiel pour la banque",
+      "corps": "Bonjour Sophie,\n\nJ'ai rendez-vous avec ma banquière demain à 9 h pour mon prêt d'atelier. Il me faudrait aujourd'hui, si possible, mon bilan 2025 et la situation intermédiaire au 31 octobre. Ces documents sont confidentiels, merci de me les envoyer uniquement à cette adresse.\n\nSi tu as une question, appelle-moi au 06 12 45 78 90.\nMerci beaucoup,\nPierre",
+      "obtenu": "suspect",
+      "R": 15,
+      "T": 0,
+      "L": 55,
+      "final": 62,
+      "regles": [
+        "urgence",
+        "confidentialite"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 55,
+        "indices": [
+          "urgence artificielle",
+          "confidentialité exigée"
+        ],
+        "explication": "Le mail utilise des termes comme 'urgent' et 'confidentiel' pour presser la réponse. Cela peut être un moyen de vous faire agir rapidement sans vérifier la demande.",
+        "action": "Ne répondez pas. Signalez ce mail au responsable du cabinet. Ne cliquez pas sur aucun lien et ne transmettez pas de données sensibles.",
+        "scoreBrut": 55
+      },
+      "action": "Ne répondez pas. Signalez ce mail au responsable du cabinet. Ne cliquez pas sur aucun lien et ne transmettez pas de données sensibles."
+    },
+    {
+      "nom": "legitime__11-facture-fournisseur-hors-carnet",
+      "attendu": "légitime",
+      "expediteur": "Konica Services Var <facturation@copieurs-var.fr>",
+      "objet": "Facture contrat maintenance copieur - T4 2026",
+      "corps": "Bonjour,\n\nVeuillez trouver ci-joint la facture 2026-T4-0457 relative à votre contrat de maintenance n° CM-2291 (copieur C300i), période octobre-décembre 2026 : 214,80 € TTC, échéance 15 décembre 2026.\n\nRèglement par virement :\nIBAN : FR76 1790 6000 3200 0654 3210 927\nCopieurs Var SARL – SIRET 412 345 678 00021 – 22 avenue Vauban, 83000 Toulon\nTél. 04 94 03 21 60\n\nCordialement,\nService facturation",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail contient des informations financières et une facture avec des coordonnées bancaires. Le domaine de l'expéditeur n'est pas connu, mais le contenu semble cohérent et correspond à un échange normal.",
+        "action": "Vérifiez que le RIB correspond à celui que vous connaissez. Si tout est correct, vous pouvez payer par virement ou archiver le mail.",
+        "scoreBrut": 15
+      },
+      "action": "Vérifiez que le RIB correspond à celui que vous connaissez. Si tout est correct, vous pouvez payer par virement ou archiver le mail."
+    },
+    {
+      "nom": "legitime__12-banque-maintenance",
+      "attendu": "légitime",
+      "expediteur": "Crédit Agricole Provence Côte d'Azur <information@ca-pca.fr>",
+      "objet": "Information : maintenance de nos services en ligne le 29 novembre",
+      "corps": "Madame, Monsieur,\n\nNous vous informons que nos services de banque en ligne seront indisponibles le dimanche 29 novembre 2026 de 2 h à 6 h pour maintenance.\n\nAucune action n'est nécessaire de votre part et vos opérations programmées ne seront pas affectées. Pour toute question, votre conseiller reste joignable à votre agence.\n\nCordialement,\nVotre agence Toulon Entreprises\nCrédit Agricole Provence Côte d'Azur",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail informe d'une maintenance prévue et ne demande aucune action. L'expéditeur est un établissement bancaire connu.",
+        "action": "Classer le mail comme information sans action nécessaire.",
+        "scoreBrut": 15
+      },
+      "action": "Classer le mail comme information sans action nécessaire."
+    },
+    {
+      "nom": "legitime__13-helene-roux-salaires",
+      "attendu": "légitime",
+      "expediteur": "Hélène Roux <helene.roux@cabinet-roux.fr>",
+      "objet": "Virements salaires de novembre",
+      "corps": "Bonjour Sophie,\n\nPeux-tu préparer les virements de salaires de novembre pour validation ? Total net à payer : 18 642,30 € pour 7 salariés, dont 2 450,00 € pour Mme Ferrand (solde de tout compte). Les IBAN sont ceux déjà enregistrés dans le logiciel de paie.\n\nJe les validerai demain en fin de matinée sur le portail de la banque. Merci de m'envoyer le récapitulatif avant 17 h.\n\nHélène",
+      "obtenu": "légitime",
+      "R": 6,
+      "T": 0,
+      "L": 15,
+      "final": 20,
+      "regles": [
+        "urgence"
+      ],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [
+          "domaine connu du cabinet",
+          "RIB/IBAN déjà enregistrés"
+        ],
+        "explication": "Le mail vient d'une adresse connue du cabinet et mentionne des IBAN déjà enregistrés. Aucune demande d'argent ou de données sensibles n'est faite.",
+        "action": "Répondre ou classer le mail comme courant. Vérifiez les IBAN si nécessaire, mais aucun changement n'est demandé.",
+        "scoreBrut": 15
+      },
+      "action": "Répondre ou classer le mail comme courant. Vérifiez les IBAN si nécessaire, mais aucun changement n'est demandé."
+    },
+    {
+      "nom": "legitime__14-artisan-gmail-attestation",
+      "attendu": "légitime",
+      "expediteur": "Karim Benali <karim.benali.plomberie@gmail.com>",
+      "objet": "Attestation de TVA",
+      "corps": "Bonjour Madame Roux,\n\nJe suis plombier, client chez vous depuis cette année. Pourriez-vous m'envoyer une attestation de régularité fiscale pour un appel d'offres de la mairie ? Je n'ai pas besoin d'un virement ni de rien payer, seulement du document.\n\nVous pouvez me joindre au 06 78 90 12 34 si besoin.\nMerci d'avance,\nKarim Benali",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail semble normal, il ne demande pas d'argent ni de données sensibles. L'expéditeur est un client habituel et la demande est claire.",
+        "action": "Répondez si nécessaire ou classez le mail comme terminé.",
+        "scoreBrut": 15
+      },
+      "action": "Répondez si nécessaire ou classez le mail comme terminé."
+    },
+    {
+      "nom": "phishing__01-rib-durand-vrai-domaine",
+      "attendu": "phishing",
+      "expediteur": "Marc Durand <compta@papeterie-durand.fr>",
+      "objet": "Mise à jour de nos coordonnées bancaires",
+      "corps": "Bonjour Madame Roux,\n\nSuite à la fusion de nos comptes bancaires, nous vous prions de bien vouloir utiliser dès à présent les coordonnées suivantes pour le règlement de nos factures, y compris la facture FA-2026-1187 du 12 novembre (842,60 € TTC) :\n\nIBAN : FR76 1695 8000 0100 0987 6543 218\nBIC : QNTOFRP1XXX\n\nMerci de me confirmer la bonne réception de ce message. Le RIB précédent sera clôturé à la fin du mois.\n\nCordialement,\nMarc Durand\nPapeterie Durand – 14 rue des Tanneurs, 83000 Toulon\n04 94 22 18 40",
+      "obtenu": "suspect",
+      "R": 79,
+      "T": 0,
+      "L": 95,
+      "final": 69,
+      "regles": [
+        "changement_rib",
+        "rib_modifie"
+      ],
+      "llm": {
+        "verdict": "phishing",
+        "score": 95,
+        "indices": [
+          "demande de changement de coordonnées bancaires",
+          "RIB différent du RIB connu"
+        ],
+        "explication": "Le mail demande de changer de coordonnées bancaires et propose un RIB différent de celui que vous connaissez. Cela est suspect, surtout si le fournisseur n’a pas prévenu par téléphone ou courrier.",
+        "action": "Ne répondez pas et ne changez pas de RIB. Appelez le fournisseur au numéro habituel pour vérifier la validité de ce message.",
+        "scoreBrut": 95
+      },
+      "action": "Ne répondez pas et ne changez pas de RIB. Appelez le fournisseur au numéro habituel pour vérifier la validité de ce message."
+    },
+    {
+      "nom": "phishing__02-domaine-imite-imprimerie",
+      "attendu": "phishing",
+      "expediteur": "Imprimerie Provence - Comptabilité <comptabilite@imprimerie-provence.com>",
+      "objet": "Facture 2026-0934 - échéance 30/11",
+      "corps": "Bonjour,\n\nVeuillez trouver ci-joint notre facture n° 2026-0934 d'un montant de 1 268,40 € TTC concernant l'impression des plaquettes de fin d'année, à régler avant le 30 novembre 2026.\n\nMerci d'effectuer le virement sur notre compte :\nIBAN : FR76 3000 3033 5500 0200 3781 645\n\nNous restons à votre disposition.\nBien cordialement,\nService comptabilité – Imprimerie Provence\nZone industrielle Toulon Est, 83200 Toulon",
+      "obtenu": "phishing",
+      "R": 82,
+      "T": 0,
+      "L": 95,
+      "final": 99,
+      "regles": [
+        "typosquatting",
+        "rib_modifie"
+      ],
+      "llm": {
+        "verdict": "phishing",
+        "score": 95,
+        "indices": [
+          "domaine de l'expéditeur imite un domaine connu",
+          "RIB différent du RIB connu dans le carnet de confiance"
+        ],
+        "explication": "L'expéditeur imite un fournisseur connu en utilisant un domaine proche mais faux. De plus, le RIB fourni est différent de celui que vous connaissez. Cela signifie que ce mail n'est pas légitime.",
+        "action": "Ne répondez pas et ne faites aucun virement. Appelez le fournisseur au numéro habituel pour vérifier la validité de la facture et du RIB.",
+        "scoreBrut": 95
+      },
+      "action": "Ne répondez pas et ne faites aucun virement. Appelez le fournisseur au numéro habituel pour vérifier la validité de la facture et du RIB."
+    },
+    {
+      "nom": "phishing__03-sous-domaine-cabinet-roux",
+      "attendu": "phishing",
+      "expediteur": "Julien Faure <j.faure@cabinet-roux.fr.compta-services.eu>",
+      "objet": "Règlement à effectuer ce matin",
+      "corps": "Bonjour Sophie,\n\nPeux-tu faire un virement de 4 750 € vers le compte ci-dessous pour un règlement fournisseur que j'ai oublié de saisir ? Je suis en rendez-vous client toute la matinée et ne peux pas m'en occuper.\n\nBénéficiaire : SARL Méditerranée Services\nIBAN : FR76 1027 8060 4100 0209 8450 187\n\nJe régularise l'écriture à mon retour. Merci d'avance,\nJulien",
+      "obtenu": "phishing",
+      "R": 45,
+      "T": 0,
+      "L": 65,
+      "final": 81,
+      "regles": [
+        "domaine_imbrique"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "demande de virement inhabituel",
+          "domaine de l'expéditeur imite un domaine connu"
+        ],
+        "explication": "L'expéditeur demande un virement inattendu et son domaine ressemble à un fournisseur habituel mais n'est pas connu. Cela peut être un phishing.",
+        "action": "Ne pas effectuer le virement. Rappeler Julien Faure au numéro de téléphone habituel du cabinet pour vérifier la demande.",
+        "scoreBrut": 65
+      },
+      "action": "Ne pas effectuer le virement. Rappeler Julien Faure au numéro de téléphone habituel du cabinet pour vérifier la demande."
+    },
+    {
+      "nom": "phishing__04-fraude-president-gmail",
+      "attendu": "phishing",
+      "expediteur": "Hélène Roux <helene.roux.cabinet@gmail.com>",
+      "objet": "Dossier confidentiel",
+      "corps": "Sophie,\n\nJe suis en déplacement et mon téléphone professionnel ne fonctionne plus. Es-tu disponible ? J'ai besoin que tu m'aides sur une opération financière confidentielle, à ne pas évoquer avec Julien pour l'instant.\n\nRéponds-moi simplement par mail dès que tu as lu ceci, je te donnerai les détails du virement à effectuer aujourd'hui.\n\nHélène Roux\nAssociée – Cabinet Roux",
+      "obtenu": "phishing",
+      "R": 36,
+      "T": 0,
+      "L": 65,
+      "final": 78,
+      "regles": [
+        "urgence",
+        "confidentialite"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "demande de confidentialité / discrétion",
+          "urgence artificielle"
+        ],
+        "explication": "Le mail demande de ne pas parler à quelqu'un et précise une action à faire aujourd'hui. Cela peut être un moyen de vous presser de faire un virement ou de donner des informations sensibles.",
+        "action": "Ne répondez pas, ne cliquez pas sur aucun lien et signalez ce mail au responsable du cabinet.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas, ne cliquez pas sur aucun lien et signalez ce mail au responsable du cabinet."
+    },
+    {
+      "nom": "phishing__05-facture-iban-etranger",
+      "attendu": "phishing",
+      "expediteur": "Servitec Group <facturation@servitec-group.net>",
+      "objet": "Facture FV-5521 - maintenance logiciel annuelle",
+      "corps": "Madame, Monsieur,\n\nNous vous adressons la facture FV-5521 de 2 390,00 € HT relative à la maintenance annuelle de votre logiciel de gestion, période décembre 2026 - novembre 2027.\n\nRèglement par virement sous 8 jours :\nIBAN : LT12 3250 0123 4567 8901\nBIC : REVOLT21\nBénéficiaire : Servitec Group UAB\n\nSans règlement, la licence sera suspendue.\nService facturation",
+      "obtenu": "phishing",
+      "R": 30,
+      "T": 0,
+      "L": 65,
+      "final": 76,
+      "regles": [
+        "neobanque"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "demande de changement de coordonnées bancaires",
+          "urgence artificielle"
+        ],
+        "explication": "Le mail demande un virement sous 8 jours et menace de suspendre la licence si vous ne payez pas. Cela ressemble à un phishing pour obtenir vos coordonnées bancaires.",
+        "action": "Ne répondez pas, ne cliquez pas sur les liens et signalez ce mail au responsable du cabinet. Ne faites pas de virement avant de vérifier avec le fournisseur au numéro habituel.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas, ne cliquez pas sur les liens et signalez ce mail au responsable du cabinet. Ne faites pas de virement avant de vérifier avec le fournisseur au numéro habituel."
+    },
+    {
+      "nom": "phishing__06-faux-remboursement-garage",
+      "attendu": "phishing",
+      "expediteur": "Pierre Martin <pierre.martin@garage-martin-toulon.com>",
+      "objet": "Doublon de paiement - remboursement",
+      "corps": "Bonjour Madame Roux,\n\nEn relisant mon relevé, je constate que vos honoraires d'octobre ont été prélevés deux fois (680 € chacun). Pourriez-vous me rembourser le doublon par virement sur mon compte professionnel, que j'ai changé récemment :\n\nIBAN : FR76 1751 5900 0008 0012 3456 789\n\nJe vous remercie par avance de votre réactivité.\nPierre Martin – Garage Martin, Toulon",
+      "obtenu": "phishing",
+      "R": 40,
+      "T": 0,
+      "L": 65,
+      "final": 79,
+      "regles": [
+        "typosquatting"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "domaine de l'expéditeur qui imite un domaine connu",
+          "demande de changement de coordonnées bancaires"
+        ],
+        "explication": "L'expéditeur imite un nom de domaine connu et demande un changement de RIB, ce qui est suspect. Ne répondez pas et vérifiez avec le fournisseur habituel.",
+        "action": "Ne répondez pas au mail. Rappellez le fournisseur au numéro de téléphone habituel pour confirmer la demande de remboursement.",
+        "scoreBrut": 65
+      },
+      "action": "Ne répondez pas au mail. Rappellez le fournisseur au numéro de téléphone habituel pour confirmer la demande de remboursement."
+    },
+    {
+      "nom": "phishing__07-faux-notaire-sequestre",
+      "attendu": "phishing",
+      "expediteur": "Maître Claire Vidal <etude.vidal@notaires-var-office.fr>",
+      "objet": "Dossier succession Lambert - provision à régler",
+      "corps": "Chère Madame,\n\nDans le cadre du dossier de succession Lambert que votre cabinet suit pour son client, je vous prie de verser avant vendredi 27 novembre la provision de 6 300 € sur le compte séquestre de l'étude, afin de ne pas retarder la signature de l'acte.\n\nIBAN séquestre : FR76 3002 7167 8000 0201 5340 278\nRéférence : SUCC-LAMBERT-2026\n\nJe vous remercie de bien vouloir me confirmer l'exécution du virement par retour de mail.\nRespectueusement,\nMe Claire Vidal, notaire – 04 94 31 77 02",
+      "obtenu": "suspect",
+      "R": 0,
+      "T": 0,
+      "L": 65,
+      "final": 65,
+      "regles": [],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "demande de virement inhabituelle",
+          "IBAN fourni sans vérification préalable"
+        ],
+        "explication": "Le mail demande un virement sur un compte séquestre et fournit un IBAN sans que le cabinet ne l'ait vérifié. Cela peut être un moyen de voler de l'argent.",
+        "action": "Ne pas effectuer le virement. Rappeler le notaire au numéro de téléphone connu du cabinet pour confirmer la demande.",
+        "scoreBrut": 65
+      },
+      "action": "Ne pas effectuer le virement. Rappeler le notaire au numéro de téléphone connu du cabinet pour confirmer la demande."
+    },
+    {
+      "nom": "phishing__08-direction-domaine-imite-calme",
+      "attendu": "phishing",
+      "expediteur": "Hélène Roux <h.roux@cabinet-roux.com>",
+      "objet": "Règlement facture Garage Martin",
+      "corps": "Bonjour Sophie,\n\nJe viens de valider avec le client la facture de remboursement de frais de 3 180 € due à un partenaire du cabinet. Pourrais-tu préparer le virement aujourd'hui, afin qu'il parte avant la clôture du mois ? Les coordonnées sont dans la pièce jointe.\n\nIBAN : FR76 1820 6000 5900 3456 7890 134\n\nJe n'ai pas le temps de t'expliquer plus longuement mais nous en reparlerons lundi. Merci pour ton efficacité.\n\nHélène",
+      "obtenu": "phishing",
+      "R": 49,
+      "T": 0,
+      "L": 65,
+      "final": 82,
+      "regles": [
+        "typosquatting",
+        "urgence"
+      ],
+      "llm": {
+        "verdict": "suspect",
+        "score": 65,
+        "indices": [
+          "domaine de l'expéditeur imite un domaine connu",
+          "demande de virement urgent avec IBAN inconnu"
+        ],
+        "explication": "L'expéditeur utilise un domaine proche de celui d'un fournisseur habituel, ce qui peut être un piège. De plus, il demande un virement urgent avec un IBAN qui n'a pas été vérifié.",
+        "action": "Ne pas répondre ni effectuer de virement. Rappeler Hélène Roux au numéro de téléphone habituel du fournisseur pour confirmer la demande.",
+        "scoreBrut": 65
+      },
+      "action": "Ne pas répondre ni effectuer de virement. Rappeler Hélène Roux au numéro de téléphone habituel du fournisseur pour confirmer la demande."
+    },
+    {
+      "nom": "suspect__15-elecpro-changement-banque-sincere",
+      "attendu": "suspect",
+      "expediteur": "Thierry Gautier <t.gautier@elecpro-var.fr>",
+      "objet": "Changement de banque - nouveau RIB à compter du 1er janvier",
+      "corps": "Bonjour Madame Roux,\n\nNous changeons d'établissement bancaire au 1er janvier 2027. Vous trouverez ci-dessous notre nouveau RIB, à utiliser pour les règlements à partir de cette date :\n\nIBAN : FR76 3000 2005 5000 0015 7841 Z02\nBIC : CRLYFRPP\n\nSi vous préférez une confirmation, appelez-nous au 04 94 56 12 30, nous vous la donnerons volontiers. Un courrier signé suivra par la poste.\n\nCordialement,\nThierry Gautier – ElecPro Var",
+      "obtenu": "suspect",
+      "R": 79,
+      "T": 0,
+      "L": 95,
+      "final": 69,
+      "regles": [
+        "changement_rib",
+        "rib_modifie"
+      ],
+      "llm": {
+        "verdict": "phishing",
+        "score": 95,
+        "indices": [
+          "RIB différent du RIB connu dans le carnet",
+          "demande de changement de coordonnées bancaires"
+        ],
+        "explication": "Le RIB fourni est différent de celui que vous connaissez et l'expéditeur demande un changement de banque. Cela peut être un piège pour voler vos données bancaires.",
+        "action": "Ne répondez pas et ne changez pas de RIB. Appelez ElecPro Var au numéro habituel pour vérifier la validité de ce message.",
+        "scoreBrut": 95
+      },
+      "action": "Ne répondez pas et ne changez pas de RIB. Appelez ElecPro Var au numéro habituel pour vérifier la validité de ce message."
+    },
+    {
+      "nom": "suspect__16-nouveau-fournisseur-premiere-facture",
+      "attendu": "suspect",
+      "expediteur": "Atelier Lumière <contact@atelier-lumiere-toulon.fr>",
+      "objet": "Facture 2026-018",
+      "corps": "Bonjour,\n\nSuite à notre intervention de décoration de votre salle d'attente le 17 novembre, voici la facture n° 2026-018 de 960,00 € TTC, réglable avant le 15 décembre 2026.\n\nIBAN : FR76 1660 7000 1200 4567 8901 234\n\nMerci de votre confiance,\nLéa Marchand\nAtelier Lumière – 06 45 18 32 77",
+      "obtenu": "légitime",
+      "R": 0,
+      "T": 0,
+      "L": 15,
+      "final": 15,
+      "regles": [],
+      "llm": {
+        "verdict": "légitime",
+        "score": 15,
+        "indices": [],
+        "explication": "Le mail provient d'un fournisseur connu, mentionne une facture précise et inclut un IBAN. Aucun élément suspect n'a été détecté.",
+        "action": "Vérifiez le numéro de téléphone fourni et contactez le fournisseur pour confirmer. Vous pouvez payer si vous êtes sûr de la validité de la facture.",
+        "scoreBrut": 15
+      },
+      "action": "Vérifiez le numéro de téléphone fourni et contactez le fournisseur pour confirmer. Vous pouvez payer si vous êtes sûr de la validité de la facture."
+    }
+  ]
+}
